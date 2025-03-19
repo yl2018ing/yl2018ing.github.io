@@ -1,0 +1,217 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-container {
+    display: none;
+    /* 默认隐藏搜索框 */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #f4f4f4;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-container.active {
+    display: block;
+    /* 显示搜索框 */
+}
+
+#search-box {
+    width: 100%;
+    padding: 5px;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 10px;
+    overflow-y: auto;
+    position: fixed;
+    top: 50px;
+    left: -250px;
+    /* 默认隐藏侧边栏 */
+    height: calc(100% - 50px);
+    transition: left 0.3s ease;
+    z-index: 999;
+}
+
+.sidebar.active {
+    left: 0;
+    /* 显示侧边栏 */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.bookmarks {
+    margin-top: 20px;
+}
+
+.bookmarks h3 {
+    margin-bottom: 10px;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    margin-top: 50px;
+    /* 留出头部空间 */
+    transition: margin-left 0.3s ease;
+}
+
+.content.sidebar-active {
+    margin-left: 250px;
+    /* 侧边栏打开时调整内容区域 */
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+#night-mode {
+    margin-right: 10px;
+}
+
+#font-size {
+    padding: 5px;
+}
+
+.night-mode {
+    background-color: #333;
+    color: #fff;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .content.sidebar-active {
+        margin-left: 200px;
+    }
+}
+
+/* 其他样式保持不变 */
+.page {
+    display: none;
+    /* 默认隐藏分页 */
+}
+
+.page.active {
+    display: block;
+    /* 显示当前分页 */
+}
+
+#load-more {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#load-more:hover {
+    background-color: #0056b3;
+}
+
+/* 小说段落样式 */
+.page p {
+    text-indent: 2em;
+    /* 首行缩进 */
+    margin-bottom: 1.5em;
+    /* 段落间距 */
+    line-height: 1.8;
+    /* 行高 */
+    font-family: "Georgia", "Times New Roman", serif;
+    /* 衬线字体 */
+    font-size: 16px;
+    /* 字体大小 */
+    color: #333;
+    /* 字体颜色 */
+    text-align: justify;
+    /* 两端对齐 */
+    padding: 0 10px;
+    /* 左右内边距 */
+}
+
+
+
+/* 夜间模式适配 */
+.night-mode .page p {
+    color: #ddd;
+    /* 夜间模式文字颜色 */
+}
+
+/* 分页加载按钮样式 */
+#load-more {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#load-more:hover {
+    background-color: #0056b3;
+}
+
+#load-more:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
